@@ -10,10 +10,10 @@
 [![Installs](https://img.shields.io/visual-studio-marketplace/i/express-genix.coda-ai?color=38bdf8)](https://marketplace.visualstudio.com/items?itemName=express-genix.coda-ai)
 [![Rating](https://img.shields.io/visual-studio-marketplace/r/express-genix.coda-ai?color=fbbf24)](https://marketplace.visualstudio.com/items?itemName=express-genix.coda-ai)
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
-[![Official Website](https://img.shields.io/badge/Website-coda.express--genix.dev-purple)](https://github.com/LambdaAI001/coda-website)
+[![Official Website](https://img.shields.io/badge/Website-coda--ai.dev-purple)](https://www.coda-ai.dev)
 [![Security Policy](https://img.shields.io/badge/Security-Policy-blue)](SECURITY.md)
 
-[Official Website](https://github.com/LambdaAI001/coda-website) • [Install Extension](https://marketplace.visualstudio.com/items?itemName=express-genix.coda-ai) • [Report Issue](https://github.com/LambdaAI001/coda-marketplace-assets/issues) • [Security Advisory](https://github.com/LambdaAI001/coda-marketplace-assets/security/advisories/new)
+[Official Website](https://www.coda-ai.dev) • [Install Extension](https://marketplace.visualstudio.com/items?itemName=express-genix.coda-ai) • [Report Issue](https://github.com/LambdaAI001/coda-marketplace-assets/issues) • [Security Advisory](https://github.com/LambdaAI001/coda-marketplace-assets/security/advisories/new)
 
 </div>
 
@@ -87,7 +87,7 @@ Coda never marks a task satisfied based on model assertions. It executes authori
 ## 📦 Community Links & Governance
 
 - **Extension Marketplace:** [express-genix.coda-ai](https://marketplace.visualstudio.com/items?itemName=express-genix.coda-ai)
-- **Official Documentation Website:** [coda-website](https://github.com/LambdaAI001/coda-website)
+- **Official Website:** [coda-ai.dev](https://www.coda-ai.dev)
 - **Official Live Changelog:** [VS Code Marketplace Changelog](https://marketplace.visualstudio.com/items/express-genix.coda-ai/changelog)
 - **Security Policy:** [SECURITY.md](SECURITY.md)
 - **Contributing Guidelines:** [CONTRIBUTING.md](CONTRIBUTING.md)
@@ -96,7 +96,7 @@ Coda never marks a task satisfied based on model assertions. It executes authori
 
 ## 📄 License
 
-Coda is open-source software released under the **[MIT License](LICENSE)**.
+Coda is free software released under the **[MIT License](LICENSE)**.
 
 ---
 

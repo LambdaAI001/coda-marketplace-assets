@@ -1,6 +1,6 @@
 # Contributing to Coda
 
-Thank you for your interest in contributing to Coda! Coda is an open-source project released under the **MIT License**.
+Thank you for your interest in contributing to Coda! Coda is free and released under the **MIT License**.
 
 This repository (`coda-marketplace-assets`) serves as the public coordination center, issue tracker, and feature roadmap discussion hub.
 
