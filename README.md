@@ -58,7 +58,7 @@ vscode:extension/express-genix.coda-ai
 ```
 
 ### 2. Configure Your Provider
-Open the Coda panel from the Activity Bar and pick from **35+ supported providers**:
+Open the Coda panel from the Activity Bar and pick from **37 supported providers**:
 - **Commercial:** Anthropic (Claude 3.7 / 3.5 Sonnet), OpenAI (GPT-4.5, o3-mini), Google Gemini 2.0, DeepSeek R1, Groq, Cerebras.
 - **Local & Private (100% Offline):** Ollama, LM Studio, vLLM, Venice AI, Generic OpenAI-compatible.
 - **Enterprise Cloud:** AWS Bedrock, Azure OpenAI, Google Vertex AI, Snowflake Cortex.
