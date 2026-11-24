@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.33.17
+
+- **A Clearer Extension Page.** The Marketplace page says what Coda does and how, instead of adjectives: providers are listed by name (all 37, grouped as in Coda's provider picker), the modes and defaults are described as they are today (Ask by default, Assisted, Auto-accept edits), and it points to these release notes.
+- **A Rating Request, Rarely.** After a run in which the build or tests Coda ran passed, Coda may ask once whether you'd rate it: first on the third such run, and again only ten verified runs after "Later". "Rate Coda" or "Don't ask again" ends it for good. The link opens the store your editor installs from (the Marketplace in VS Code, Open VSX in Cursor, Windsurf or VSCodium).
+
 ## 1.33.16
 
 **Review changes in one place.**
