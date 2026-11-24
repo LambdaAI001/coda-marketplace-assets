@@ -4,7 +4,7 @@
 
 <img src="coda.png" alt="Coda Logo" width="120" />
 
-### The Autonomous Software Engineering Harness Engineered for VS Code
+### An AI coding agent for VS Code that checks its own work
 
 [![Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/express-genix.coda-ai?color=34d399&label=Marketplace&logo=visual-studio-code)](https://marketplace.visualstudio.com/items?itemName=express-genix.coda-ai)
 [![Installs](https://img.shields.io/visual-studio-marketplace/i/express-genix.coda-ai?color=38bdf8)](https://marketplace.visualstudio.com/items?itemName=express-genix.coda-ai)
@@ -21,10 +21,10 @@
 
 ## 📌 About This Repository
 
-This repository is the **official public community hub, issue tracker, release notes registry, and documentation portal** for **Coda** (`express-genix.coda-ai`).
+This repository is the public home of **Coda** (`express-genix.coda-ai`): issues, security reports, discussions, and the [release notes](CHANGELOG.md) for every version.
 
 - **Bugs & Issues:** [Open a Bug Report](https://github.com/LambdaAI001/coda-marketplace-assets/issues)
-- **Feature Requests:** [Propose a Superpower](https://github.com/LambdaAI001/coda-marketplace-assets/issues)
+- **Feature Requests:** [Suggest a feature](https://github.com/LambdaAI001/coda-marketplace-assets/issues)
 - **Security Vulnerabilities:** [Submit Private Disclosure](https://github.com/LambdaAI001/coda-marketplace-assets/security/advisories/new)
 - **Discussions & Feedback:** [GitHub Discussions](https://github.com/LambdaAI001/coda-marketplace-assets/discussions)
 
@@ -32,15 +32,13 @@ This repository is the **official public community hub, issue tracker, release n
 
 ## 🚀 Why Coda?
 
-Most AI coding assistants are simple chat wrappers inside an iframe or basic prompt-to-regex loops that hallucinate call graphs, conflate file reads with test executions, and silently corrupt context.
-
-**Coda is an industrial-grade, autonomous software engineering harness engineered natively for the VS Code extension host.** It combines:
+Coda is an AI coding agent that runs inside VS Code. It edits your code, then checks its work: it runs your project's build and tests after changing code and treats a failing exit code as something to fix, not a success to report.
 
 1. **Semantic LSP Intelligence:** Language Server Protocol integration (`goToDefinition`, `findReferences`, AST refactoring) instead of blind regex grep.
 2. **Contractual Verification:** A strict Delivery Ledger that checks actual exit codes (`tsc`, `lint`, `tests_run`) rather than trusting conversational claims.
 3. **Defense-in-Depth Safety:** Protected paths (`.env`, `.git/`, lockfiles), recursive secret scrubbing, and command risk tiers.
 4. **Sub-Agent Delegation:** Isolated explorer sub-agents on cheap model tiers producing bounded 4-part distillation summaries to prevent parent context pollution.
-5. **Native IDE Superpowers:** Official Jupyter Notebook tooling (`NotebookEdit`), adapter-aware DAP debugger inspection, and safe loopback browser preview.
+5. **Built on VS Code:** Jupyter notebooks through VS Code's notebook API, debugger inspection through the Debug Adapter Protocol, and a review of every change (Keep or Undo per change, file or all) above the chat box and in the editor.
 
 ---
 
@@ -58,11 +56,11 @@ vscode:extension/express-genix.coda-ai
 ```
 
 ### 2. Configure Your Provider
-Open the Coda panel from the Activity Bar and pick from **37 supported providers**:
-- **Commercial:** Anthropic (Claude 3.7 / 3.5 Sonnet), OpenAI (GPT-4.5, o3-mini), Google Gemini 2.0, DeepSeek R1, Groq, Cerebras.
-- **Local & Private (100% Offline):** Ollama, LM Studio, vLLM, Venice AI, Generic OpenAI-compatible.
-- **Enterprise Cloud:** AWS Bedrock, Azure OpenAI, Google Vertex AI, Snowflake Cortex.
-- **Zero Setup:** Native VS Code Language Models (`vscode-lm` / GitHub Copilot subscription).
+Open the Coda panel from the Activity Bar and pick one of **37 providers**, then a model from that provider's own list:
+- **Popular:** OpenAI, Anthropic, Mistral, Groq, xAI, DeepSeek, OpenRouter, GitHub Copilot.
+- **Free and local:** Google Gemini (free tier), Ollama (runs on your machine, no key), Ollama Cloud, Pollinations, VS Code Models (your Copilot subscription), OmniRoute.
+- **Enterprise and cloud:** AWS Bedrock, Azure OpenAI, Google Vertex AI, Vercel AI Gateway, Cloudflare, GitLab Duo, SAP AI Core, Snowflake Cortex.
+- **More:** Cohere, Together AI, Fireworks AI, Perplexity, Cerebras, Alibaba Cloud, DeepInfra, NVIDIA NIM, Venice, LLM Gateway; and any OpenAI-compatible server (LM Studio, vLLM and others).
 
 API keys are stored securely using VS Code's native `SecretStorage` API — never logged or exfiltrated.
 
@@ -88,7 +86,7 @@ Coda never marks a task satisfied based on model assertions. It executes authori
 
 - **Extension Marketplace:** [express-genix.coda-ai](https://marketplace.visualstudio.com/items?itemName=express-genix.coda-ai)
 - **Official Website:** [coda-ai.dev](https://www.coda-ai.dev)
-- **Official Live Changelog:** [VS Code Marketplace Changelog](https://marketplace.visualstudio.com/items/express-genix.coda-ai/changelog)
+- **Release notes:** [CHANGELOG.md](CHANGELOG.md) (also on the [Marketplace's Changelog tab](https://marketplace.visualstudio.com/items/express-genix.coda-ai/changelog))
 - **Security Policy:** [SECURITY.md](SECURITY.md)
 - **Contributing Guidelines:** [CONTRIBUTING.md](CONTRIBUTING.md)
 
