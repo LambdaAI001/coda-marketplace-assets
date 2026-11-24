@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.33.18
+
+- **See What Coda Is Doing.** While Coda works, its newest six steps stay open, with older ones folded behind "N earlier steps". Steps still in progress (shown on the live status line) were taking places in that window while staying invisible, so often only two steps showed under a large "earlier steps" count. Now you see six real steps, and the count matches what is folded.
+- **One Set of Numbers for Changed Files.** A run's file rows and summary line added up each edit (an edit that rewrote 35 lines to change three counted +35 −35), while the pending-changes list showed the real difference, so the same change read "+73 −64" in one place and "+19 −10" in another. Both now show the real difference, and a file edited several times is one row ("×3"). A new one-line file reads "+1", not "+1 −1".
+- **Short Paths in Pending Changes.** In a project opened through a linked folder (including macOS temporary folders), the pending-changes list showed each file's full path instead of its place in the project.
+- **No "Waiting for Approval" on a Finished Run.** A run whose approvals were answered without a click (a session approval, or the run ending) kept that warning on its summary.
+- **"Destructive" Means Destructive.** Inline scripts (`node -e "…"`, `python -c "…"`) still ask before running, but no longer carry the red "Destructive" badge unless they delete something; a run's test scripts were all flagged "can delete data".
+- **Test Results Without Readable Counts.** When a test run's output has no counts Coda can read, the results box says so and points to the raw output, instead of showing "FAILED · 0 passed · 0 failed".
+- **Smaller Download.** An unused 1 MB image is no longer included in the extension.
+
 ## 1.33.17
 
 - **A Clearer Extension Page.** The Marketplace page says what Coda does and how, instead of adjectives: providers are listed by name (all 37, grouped as in Coda's provider picker), the modes and defaults are described as they are today (Ask by default, Assisted, Auto-accept edits), and it points to these release notes.
