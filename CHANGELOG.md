@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.33.19
+
+- **A Long File List Folds.** A run that changed many files added one full-width row per file to the chat, pushing everything else out of view. While Coda works, only the three newest files now show, under "N more files". When the run ends, a list of more than three files folds into one "N files changed +x −y" line that opens with a click. The pending-changes bar above the input still lists every file with Keep / Undo.
+
 ## 1.33.18
 
 - **See What Coda Is Doing.** While Coda works, its newest six steps stay open, with older ones folded behind "N earlier steps". Steps still in progress (shown on the live status line) were taking places in that window while staying invisible, so often only two steps showed under a large "earlier steps" count. Now you see six real steps, and the count matches what is folded.
