@@ -1,5 +1,32 @@
 # Changelog
 
+## 1.37.0
+
+- **Background Sessions.** `/background <task>` (or **Coda: Run In Background**) runs an agent in its own git worktree, in this window, while you keep working; several run at once. The strip above the input shows each run's steps and current action, and when one finishes you can **Review** its report and diff, **Apply** its changes to your checkout as uncommitted changes (three-way merged), **Open** the worktree in a window, or **Discard** it. Before, "run in background" only created the worktree and opened it in a new window for you to drive by hand.
+- **Isolated Runs Are Auto-Approved.** Inside a worktree, edits and commands run without cards; deletes, pushes and pull requests still ask. The pending-changes bar lists only files in your open folders, so a background run's edits never mix with yours.
+
+## 1.36.0
+
+- **A Browser With No Setup.** `browserAction` now drives a real Google Chrome through Chrome DevTools MCP, started on demand with `npx` in an isolated profile after you confirm, instead of asking you to install Playwright in your project. The agent lists the browser's tools, opens pages, reads accessibility snapshots, clicks and fills by element id, reads console and network output, and saves screenshots under `.coda/attachments/`. `coda.browser.mcpCommand` changes the server or adds `--headless`. The server's own usage statistics are turned off.
+- **MCP Prompts and Resources in the Panel.** Prompt templates from connected servers are slash commands, `/mcp.<server>.<prompt> [args]`, and **Coda: Attach MCP Resource** attaches a server resource to your next message. Both update as servers connect.
+- **OpenTelemetry Export, Opt In.** `coda.telemetry.otlpEndpoint` sends one trace per run (run, step and tool spans with provider, model, tokens, durations, outcomes; no prompts or file contents) over OTLP/HTTP JSON to a collector you name. Empty by default; Coda still has no telemetry of its own.
+- **Edit Tools, Measured.** `npm run report:edit-tools` tallies edit-tool calls and errors per model from recorded live-eval runs. From 310 recorded tasks: `editFile` is 532 of 545 edit calls, `applyPatch` and `applyDiff` were never called, so the four edit paths are not being confused; `createFile` fails 13–15% of the time on two models and is the thing to look at next. See `docs/EDIT_TOOL_REPORT.md`.
+
+## 1.35.0
+
+- **Fill-in-the-Middle Inline Completions.** On Mistral Codestral, DeepSeek and Ollama, inline completions now use the provider's FIM endpoint (`/v1/fim/completions`, `/beta/completions`, `/api/generate` with `suffix`) instead of a chat prompt: the prefix and suffix are sent as fields and only the gap comes back. A model that refuses FIM falls back to the chat prompt for the session. `coda.inlineCompletions.nativeFim` turns it off.
+- **The Model Provider's Own Web Search.** `coda.webSearch.provider: "model"` gives agent runs on Anthropic the `web_search` and `web_fetch` tools, and runs on OpenAI (Responses) the `web_search` tool, run on the provider's servers with citations and billed by them; other providers fall back to DuckDuckGo. Gemini's search cannot yet be combined with Coda's tools outside a preview mode, so it is not included.
+- **Claude's Context Editing and Memory Tool (opt in).** `coda.anthropic.contextEditing` asks Anthropic to clear the oldest tool results server-side once a request passes 100k input tokens (newest five kept, the memory tool never cleared), and gives Claude its memory tool over `.coda/memories/`. Coda's own token estimate accounts for what the server will clear, so its compaction stays a backstop instead of firing first. Off by default until a before/after on the eval suite with an Anthropic key; the logs show what each step cleared.
+- **Live Capability Probes Feed the Matrix.** `npm run probe:capabilities -- --provider <id> --model <id> --api-key-file <file> --write` runs four real requests (tool calling, parallel calls, forced choice, streaming calls) and records the result in the provider capability matrix, where a verified yes upgrades the hand-written row and a no never downgrades it. First row: NVIDIA, verified with `poolside/laguna-xs-2.1`.
+
+## 1.34.0
+
+- **Remote MCP Servers.** A server entry with a `url` connects over MCP's Streamable HTTP transport, so hosted servers (GitHub, Sentry, Linear, Atlassian and others) work alongside local `command` servers. When a server requires sign-in, Coda runs the MCP authorization flow (OAuth 2.1 with PKCE, metadata discovery, dynamic client registration) through your browser and keeps the token in VS Code's SecretStorage. Dropped sessions reconnect on their own. **Coda: MCP Marketplace** gains **Connect remote server**.
+- **One MCP Config for Every Agent.** Besides `.coda/mcp.json`, Coda now reads `.mcp.json` (Claude Code) and `.vscode/mcp.json` (VS Code) from the workspace, and plugins may bring remote servers too. Header values accept `${env:VAR}`.
+- **Servers Can Ask You Questions.** MCP elicitation requests appear as VS Code input boxes; `ping` and `roots/list` are answered. Prompt templates and resources are read from servers that offer them (the panel does not list them yet).
+- **Hooks for the Whole Run.** Beyond `pre-tool` and `post-tool`, hooks can run on `post-tool-failure`, `session-start`, `user-prompt-submitted`, `pre-compact`, `subagent-start`, `subagent-stop`, `agent-stop` and `session-end`. Claude Code and VS Code event names are accepted, each hook gets the event's JSON on stdin and in `CODA_HOOK_PAYLOAD`, a prompt hook can stop a run, and what a session-start or prompt hook prints becomes context for the model. Hook files in `.coda/hooks/`, `.github/hooks/` and `.claude/settings*.json` are read in trusted workspaces.
+- **Quick Fixes from the Language Server.** New tools `getCodeActions` and `applyCodeAction` let the agent apply the fix VS Code offers for a diagnostic (a missing import, a missing member), and `organizeImports` sorts and prunes imports the way the language server does. The edits are tracked, so Undo and the pending-changes list cover them.
+
 ## 1.33.19
 
 - **A Long File List Folds.** A run that changed many files added one full-width row per file to the chat, pushing everything else out of view. While Coda works, only the three newest files now show, under "N more files". When the run ends, a list of more than three files folds into one "N files changed +x −y" line that opens with a click. The pending-changes bar above the input still lists every file with Keep / Undo.
