@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.40.0
+
+- **A Calmer Trace While Coda Works.** The live line under the steps now shows only what is happening right now; finished operations were being listed a second time there ("Inspected files", "Ran a command") beside their own rows. Rows that said nothing are gone: the "Waiting for user input" warning that stayed behind after its approval card, the execution-report path, and the "Arguments" disclosure under a command whose command is the row. A failed edit's reason now sits on the row that reported it instead of a second row. Live command output is capped to a scrolling tail, and a failed command's output stays open without filling the panel.
+- **Output That Was Invisible.** A tool's output panel faded in from transparent and sometimes never finished fading, so a failed test run showed as a tall empty box. The panel no longer animates its opacity. Test results with no readable counts open the raw output directly instead of hiding it behind an empty tree.
+- **The Answer Appears Once (Again).** A run that finalized on a status event before its final text arrived kept the last streamed note as the "outcome" and then rendered the same text as the answer. The note is now removed once the answer is on screen. Found on a fresh recording of this build and pinned by a replay test.
+- **Plainer Words.** "Approval needed" in the header (it was truncated to "Waiting for ap…"), "Question for you" when the agent asks, "Not checked" in grey instead of "Not verified" in yellow when nothing needed checking, "Enter: queue · Alt+Enter: guide now" in the composer, "Run details" instead of "Operator Surface", "Suggested" in the Command Center, and no more "N reports saved" chip (reports are under Run details).
+- **A Settings Sheet That Says Something.** The gear now opens a sheet with the model, permission level and index state, each one click from where it is changed, and MCP servers with their state ("4 tools", "Sign-in needed", "Not connected"), a remote badge and a Connect / Restart / Sign in action.
+- **Run Details Shows the Real Trace.** The drawer's Workflow tab is a copy of the chat's trace rows (reads, edits, commands with outcomes) instead of its own dot list of "Agent step" entries.
+- **Finished-Turn Polish.** The run line says "Show steps" / "Hide steps"; the checkpoint line lost its ruler across the chat; the empty state shows Coda's mark; a focused pending-changes row uses the theme's focus border instead of a thick ring.
+
+## 1.39.0
+
+- **Next-Edit Suggestions Look Where the Facts Point.** The predictor now receives candidate lines: other uses of an identifier the last edit changed, and lines the language server flags after it. On the replayed-commit eval this doubled the real next edits found (4 → 8 of 40) and raised precision from 17% to 27% of suggestions; `coda.nextEditSuggestions.restrictToCandidates` (default on) keeps suggestions on those lines, which cut the noise without losing hits. Still a preview, still off by default: three in four suggestions from a small model are wrong (`docs/NEXT_EDIT_EVAL.md`).
+- **Screenshots Reach the Model.** A browser screenshot is handed to the run's model as an image when the model accepts images (Claude, GPT, Gemini and others per their catalogs); text-only models get the saved path as before.
+- **Tool Output Shapes Survive Hooks and Middleware.** Tools that return more than text to the model (sub-agent reports, browser screenshots) lost that shape when hooks or the lifecycle middleware wrapped them; the wrappers now carry it through.
+- **createFile Failures Are Classified.** `createFile` reports why it failed (`exists`, `outside-workspace`, `write-lock`, `write-rejected`, ...), the eval records the kinds per tool, and `npm run report:edit-tools` shows them, so the 13–15% createFile error rate from the last report can be explained from the next eval batch rather than guessed.
+
+## 1.38.0
+
+- **Next-Edit Suggestions (preview, off by default).** With `coda.nextEditSuggestions.enabled`, Coda predicts the next related edit after you change something and pause (the other call site, the matching import, a renamed field's other uses) and shows it in place on the stable API: the target lines highlighted, a hint naming the reason and the new text, Tab to apply while the cursor is inside the range, Alt+] to jump, Esc to dismiss. Accepting moves the cursor there so the next prediction can follow on.
+- **Measured Before Default.** `npm run eval:next-edit` replays a repository's own multi-hunk commits and scores whether the predicted edit was one the programmer went on to make. On this repository with a small model, 17% of suggestions hit a real next edit and none matched exactly (`docs/NEXT_EDIT_EVAL.md`), which is why the setting ships off; the editor keeps requested / offered / accepted / dismissed counters for the same question in real use.
+
 ## 1.37.0
 
 - **Background Sessions.** `/background <task>` (or **Coda: Run In Background**) runs an agent in its own git worktree, in this window, while you keep working; several run at once. The strip above the input shows each run's steps and current action, and when one finishes you can **Review** its report and diff, **Apply** its changes to your checkout as uncommitted changes (three-way merged), **Open** the worktree in a window, or **Discard** it. Before, "run in background" only created the worktree and opened it in a new window for you to drive by hand.
